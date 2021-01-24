@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>CalendarAccessRedirectURL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>CalendarAccessRedirectURL</shortDescription>
+        <value>https://appointment-scheduler-developer-edition.ap24.force.com/calendaraccess</value>
+    </labels>
+    <labels>
+        <fullName>Google_APIs_CalendarList_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Google APIs CalendarList URL</shortDescription>
+        <value>https://www.googleapis.com/calendar/v3/users/me/calendarList</value>
+    </labels>
+    <labels>
+        <fullName>Google_APIs_Calendar_Scope</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Google APIs Calendar Scope</shortDescription>
+        <value>https://www.googleapis.com/auth/calendar</value>
+    </labels>
+    <labels>
+        <fullName>Google_APIs_Client_Id</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Google APIs Client Id</shortDescription>
+        <value>1024430820563-1u67fqrmakijl0lbs59909l0nsfj7gcl.apps.googleusercontent.com</value>
+    </labels>
+    <labels>
+        <fullName>Google_APIs_Client_Secret</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Google APIs Client Secret</shortDescription>
+        <value>e_4z1YToxYsNysPPTK6cvPCA</value>
+    </labels>
+    <labels>
+        <fullName>Google_APIs_InsertEvent_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Google APIs InsertEvent URL</shortDescription>
+        <value>https://www.googleapis.com/calendar/v3/calendars/{!CALENDAR_ID}/events</value>
+    </labels>
+    <labels>
+        <fullName>Google_APIs_OAuth_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Google APIs OAuth URL</shortDescription>
+        <value>https://accounts.google.com/o/oauth2/auth?scope={!CALENDAR_SCOPE}&amp;response_type=code&amp;access_type=offline&amp;redirect_uri={!REDIRECT_URI}&amp;client_id={!CLIENT_ID}&amp;state={!STATE}</value>
+    </labels>
+    <labels>
+        <fullName>Google_APIs_RefreshToken_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Google APIs RefreshToken URL</shortDescription>
+        <value>https://accounts.google.com/o/oauth2/token?grant_type=refresh_token&amp;access_type=offline&amp;redirect_uri={!REDIRECT_URI}&amp;client_id={!CLIENT_ID}&amp;client_secret={!CLIENT_SECRET}&amp;refresh_token={!REFRESH_TOKEN}</value>
+    </labels>
+    <labels>
+        <fullName>Google_APIs_Token_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Google APIs Token URL</shortDescription>
+        <value>https://accounts.google.com/o/oauth2/token?scope={!CALENDAR_SCOPE}&amp;grant_type=authorization_code&amp;access_type=offline&amp;redirect_uri={!REDIRECT_URI}&amp;client_id={!CLIENT_ID}&amp;client_secret={!CLIENT_SECRET}&amp;code={!AUTH_CODE}</value>
+    </labels>
+</CustomLabels>

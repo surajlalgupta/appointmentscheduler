@@ -1,0 +1,7 @@
+Dear {!Appointment__c.Patient_Name__c},
+
+
+Your appointment with Dr. {!Appointment__c.Physician_Name__c} which was scheduled for {!Appointment__c.StartTime__c} has been cancelled. Should you need to reschedule, please contact our toll-free booking helpline number 1800-129-186.
+
+Best Regards,
+Appointment Helpdesk

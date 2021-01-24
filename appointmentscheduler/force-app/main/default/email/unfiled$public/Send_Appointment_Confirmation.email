@@ -1,0 +1,7 @@
+Dear {!Appointment__c.Patient_Name__c},
+
+
+Your appointment with Dr. {!Appointment__c.Physician_Name__c} has been confirmed for {!Appointment__c.StartTime__c}. Please check in 10 minutes before the scheduled time to complete any registeration and/or payment formalities if required. Please mention your relationship number {!Appointment__c.Relationship_Number__c} to the coordinator.
+
+Best Regards,
+Appointment Helpdesk

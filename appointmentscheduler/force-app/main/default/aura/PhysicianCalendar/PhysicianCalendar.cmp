@@ -1,0 +1,58 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="PhysicianCalendarController">
+	<aura:attribute name="email" type="String" description="email address of the physician"/>
+    <aura:attribute name="specialization" type="String" description="name of the specialization"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false" description="boolean flag to conditionally render spinner"/>
+    <aura:attribute name="showModal" type="Boolean" default="false" description="flag to toggle modal box"/>
+    <aura:attribute name="summary" type="String" description="summary of appointment details"/>
+    <aura:attribute name="patientName" type="String" description="name of the patient"/>
+    <aura:attribute name="patientEmail" type="String" description="email of the patient"/>
+    <aura:attribute name="patientDOB" type="Date" description="DOB of the patient"/>
+    <aura:attribute name="startTime" type="String" description="startTime of the event"/>
+    <aura:attribute name="endTime" type="String" description="endTime of the event"/>
+    <aura:attribute name="relationshipNumber" type="String" description="relationship number of existing customer"/>
+
+    <ltng:require styles="{!$Resource.calendar  + '/fullcalendar-3.8.0/fullcalendar.css'}" 
+		scripts="{!join(',',
+			$Resource.calendar + '/fullcalendar-3.8.0/lib/jquery.min.js',
+			$Resource.calendar + '/fullcalendar-3.8.0/lib/moment.min.js', 
+			$Resource.calendar  + '/fullcalendar-3.8.0/fullcalendar.js')}"  
+		afterScriptsLoaded="{!c.doInit}" />
+    <aura:if isTrue="{!v.showSpinner}">
+    	<lightning:spinner alternativeText="Loading" size="medium"/>
+    </aura:if>
+    <div id="calendar"></div>
+    <aura:if isTrue="{!v.showModal}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.hideModal }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Enter Appointment Details</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div style="text-align:center;">Please either enter Patient RN or Email, Name and DOB for patient details</div>
+                    <br/>
+                    <lightning:input value="{!v.relationshipNumber}" label="Patient RN"/>
+                    <lightning:input value="{!v.patientName}" label="Patient Name"/>
+                    <lightning:input value="{!v.patientEmail}" label="Patient Email"/>
+                    <lightning:input type="date" value="{!v.patientDOB}" label="Patient DOB"/>
+                    <lightning:textarea value="{!v.summary}" label="Summary"/>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="brand" 
+                                      label="Confirm"
+                                      title="Confirm"
+                                      onclick="{! c.bookAppointment }"/>
+                    <lightning:button variant="neutral" 
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{! c.hideModal }"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

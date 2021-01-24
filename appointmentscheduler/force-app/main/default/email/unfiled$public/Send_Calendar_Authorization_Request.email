@@ -1,0 +1,10 @@
+Dear {!Physician__c.Name},
+
+
+Please use the below URL to authorize access to your google calendar. This is a necessary step in receive outpatient appointments to your calendar. We appreciate your cooperation. Should you require any further clarification, please reach out to your CRM representative.
+
+http://appointment-scheduler-developer-edition.ap24.force.com/calendaraccess?email={!Physician__c.Email__c}
+
+
+Best Regards,
+Appointment Helpdesk

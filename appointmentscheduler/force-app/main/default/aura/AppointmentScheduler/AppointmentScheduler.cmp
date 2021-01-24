@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="AppointmentSchedulerController">
+    <aura:attribute name="specializations" type="Object[]" description="list of specializations and physicians"/>
+    <aura:attribute name="selectedPhysician" type="String" description="email address of selected physician"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false" description="boolean flag to conditionally render spinner"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.selectedPhysician}" action="{!c.handleChange}"/>
+    <aura:dependency resource="c:PhysicianCalendar"/>
+    <aura:if isTrue="{!v.showSpinner}">
+    	<lightning:spinner alternativeText="Loading" size="medium"/>
+    </aura:if>
+    <div style="padding:10px 20px;text-align:center;min-height:855px;margin-right:-15px;;margin-left:-15px;margin-top:-15px;background-color:lightslategray;">
+        <aura:iteration items="{!v.specializations}" var="specialization">
+            <div style="width:19%;display:inline-block;margin:0.5% 0.5%;">
+                <lightning:card variant="Narrow" class="custom-card" title="{!specialization.Name}">
+                    <p class="slds-p-horizontal_small">
+                        <p style="font-size:30px;">₹ {!specialization.Consultation_Fee__c}</p>
+                        <lightning:select name="{!specialization.Name}" label="Specialists" value="{!v.selectedPhysician}">
+                            <option value="default">Select Physician</option>
+                            <aura:iteration items="{!specialization.PhysicianSpecializations__r}" var="physician">
+                                <option value="{!physician.Physician_Email__c+'_'+specialization.Name}">{!physician.Physician_Name__c}</option>
+                            </aura:iteration>    
+                        </lightning:select>
+                    </p>
+                </lightning:card>
+            </div>
+        </aura:iteration>
+        <hr style="width: 79%;margin: auto;background-color: white;margin-top: 10px;margin-bottom: 10px;"/>
+        <div style="min-height:590px;width:79%;margin:auto;background-color:white;padding:25px 50px;" aura:id="calendar">  
+        </div>
+	</div>
+</aura:component>

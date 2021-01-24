@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Send_Calendar_Authorization_Request</fullName>
+        <description>Send Calendar Authorization Request</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Send_Calendar_Authorization_Request</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Set_Request_Authorization_to_false</fullName>
+        <field>Request_Authorization__c</field>
+        <literalValue>0</literalValue>
+        <name>Set Request Authorization to false</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Send Calendar Authorization Request</fullName>
+        <actions>
+            <name>Send_Calendar_Authorization_Request</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Set_Request_Authorization_to_false</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>OR(ISNEW(), AND(PRIORVALUE( Request_Authorization__c) != Request_Authorization__c, Request_Authorization__c == true))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,5 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" controller="CalendarAccessController" action="{!getCalendarAccess}">
+    <div style="font-size:24px;">
+        <apex:pageMessages />
+    </div>
+</apex:page>
